@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import {GoogleSignin, GoogleSigninButton} from '@react-native-community/google-signin';
 
+import {GOOGLE_FIREBASE_CLIENT_ID} from '@env';
 
 import HomeHeaderView from './views/home_view/HomeView'
 import HomeScreenTabs from './views/util_view/HomeScreenTabs';
@@ -28,7 +29,7 @@ class App extends React.Component {
 
   componentDidMount = () => {
     GoogleSignin.configure({
-      webClientId: 'inputClientKeyHere'
+      webClientId: `${GOOGLE_FIREBASE_CLIENT_ID}`
     });
   }
 
