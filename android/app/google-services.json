@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "391217160000",
+    "project_id": "covisafe-india",
+    "storage_bucket": "covisafe-india.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391217160000:android:3a2f8877ba12ce14bd64a5",
+        "android_client_info": {
+          "package_name": "com.covisafeindia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "391217160000-ho57npb8ouvgmgbig3q22fpmtqkburu8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.covisafeindia",
+            "certificate_hash": "0882c2f99ae3fed2574c79493a283b1e5a20d934"
+          }
+        },
+        {
+          "client_id": "391217160000-215m1gje7a07d3nl1mgg00t6c2mef9pb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9Sjlh2I00R1IiBdnS_KMfyQcTosArRy0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "391217160000-215m1gje7a07d3nl1mgg00t6c2mef9pb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
