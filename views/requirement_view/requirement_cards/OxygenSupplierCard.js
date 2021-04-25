@@ -8,10 +8,15 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-import { hospitalIcon, locationIcon, check, warning } from '../../utils/constants';
+import { 
+    hospitalIcon, 
+    locationIcon, 
+    checkIcon, 
+    warningIcon 
+} from '../../../utils/constants';
 
 
-const RequirementCard = ({ 
+const HospitalBedCard = ({ 
     entityName,
     requirementName,
     primaryContact,
@@ -31,9 +36,9 @@ const RequirementCard = ({
                     <Text style={styles.requirementName}>{requirementName}</Text>
                     {
                         verified?
-                        <Image source={check} style={styles.requirementIcon}/>
+                        <Image source={checkIcon} style={styles.requirementIcon}/>
                         :
-                        <Image source={warning} style={styles.requirementIcon}/>
+                        <Image source={warningIcon} style={styles.requirementIcon}/>
                     }
                 </View>
                 <Text style={styles.primaryContact}>Primary contact : {primaryContact}</Text>
@@ -77,12 +82,12 @@ const styles = StyleSheet.create({
     requirementIcon:{
         height:20,
         width:20,
-        marginTop:10,
         marginLeft:10
     },
     requirementWrapper:{
         flexDirection:'row',
-        alignItems:'center'
+        alignItems:'center',
+        marginTop:10
     },
     entityName:{
         fontFamily:'RedHatDisplay-Bold',
@@ -91,7 +96,6 @@ const styles = StyleSheet.create({
     },
     requirementName:{
         fontFamily:'RedHatDisplay-Medium',
-        marginTop:10
     },
     primaryContact:{
         fontFamily:'RedHatDisplay-Medium',
@@ -112,4 +116,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default RequirementCard;
+export default HospitalBedCard;

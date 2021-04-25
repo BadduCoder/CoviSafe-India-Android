@@ -3,10 +3,20 @@ import {
   ScrollView,
   StyleSheet,
   View,
+  Text
 } from 'react-native';
 
-import RequirementCard from './RequirementCard';
-import requirementData from './requirementsData';
+import { 
+    OxygenSupplierCard, 
+    BloodDonorCard,
+    HospitalBedCard 
+} from './requirement_cards/allCards';
+import { 
+    oxygenRequirementData, 
+    bloodRequirementData,
+    hospitalRequirementData 
+} from './dummy_data/allData';
+
 import HeaderView from '../header_view/HeaderView';
 import { BloodPicker, OxygenFilter } from './filter_components/allFilters';
 
@@ -36,8 +46,8 @@ class RequirementView extends React.Component {
 
         if(routeData.requirementType === "Oxygen")
         {
-            requirementCardData = requirementData.map(requirement => (
-                <RequirementCard 
+            requirementCardData = oxygenRequirementData.map(requirement => (
+                <OxygenSupplierCard 
                     key = {requirement.id}
                     entityName = {requirement.entityName}
                     requirementName = {requirement.requirementName}
@@ -48,8 +58,45 @@ class RequirementView extends React.Component {
                 />
             ));
         }
+        else if(routeData.requirementType === "Blood / Plasma")
+        {
+            requirementCardData = bloodRequirementData.map(requirement => (
+                <BloodDonorCard 
+                    key = {requirement.id}
+                    entityName = {requirement.entityName}
+                    requirementName = {requirement.requirementName}
+                    primaryContact = {requirement.primaryContact}
+                    secondaryContact = {requirement.secondaryContact}
+                    location = {requirement.location}
+                    verified = {requirement.verified}
+                    blood = {requirement.blood}
+                    plasma = {requirement.plasma}
+                />
+            ));
+        }
+        else if(routeData.requirementType === "Hospital Beds")
+        {
+            requirementCardData = hospitalRequirementData.map(requirement => (
+                <HospitalBedCard 
+                    key = {requirement.id}
+                    entityName = {requirement.entityName}
+                    primaryContact = {requirement.primaryContact}
+                    secondaryContact = {requirement.secondaryContact}
+                    location = {requirement.location}
+                    verified = {requirement.verified}
+                    icu = {requirement.icu}
+                    normal = {requirement.normal}
+                />
+            ));
+        }
         if(requirementCardData === null)
-            return null;
+            return <Text style={{
+                alignSelf:'center', 
+                fontFamily:'RedHatDisplay-Bold',
+                fontSize:20,
+                alignItems:'center',
+                marginTop:'70%'
+                }}>Coming Soon!</Text>;
         return [...requirementCardData];
     }
 

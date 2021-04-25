@@ -16,7 +16,6 @@ import RequirementView from './views/requirement_view/RequirementView';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import RequirementCard from './views/requirement_view/RequirementCard';
 
 
 const Stack = createStackNavigator();
