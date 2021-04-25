@@ -7,7 +7,8 @@ import {
   Image,
   TextInput,
   FlatList,
-  SafeAreaView
+  SafeAreaView,
+  ScrollView
 } from 'react-native';
 
 import RequirementView from '../requirement_view/RequirementView';
@@ -16,20 +17,11 @@ import AddView from '../add_view/AddView';
 import HomeSelectCard from '../homescreen_view/homeSelectionCard';
 import cardsData from './homeScreenCardData';
 
+
 class HomeScreenView extends React.Component {
 
     onCardClick = () => {
         alert("Hellow")
-    }
-
-    renderCards = (item) => {
-        return(
-            <HomeSelectCard
-                text = {item.item.text}
-                icon = {item.item.icon}
-                onClick = {this.onCardClick}
-            />
-        );
     }
 
     render()
@@ -37,18 +29,18 @@ class HomeScreenView extends React.Component {
         return (
             <View style={styles.homeViewWrapper}>
                 <View>
-                    <TextInput 
-                        style={styles.locationFilter} 
-                        placeholder={"Location"} 
-                        placeholderTextColor="black" 
-                    />
-                </View>
-                <View style={styles.cardsWrapper}>
-                    <FlatList
-                        data={cardsData}
-                        renderItem={this.renderCards}
-                        keyExtractor={(card) => card.id}
-                    />
+                    <ScrollView contentContainerStyle={styles.cardsWrapper}>
+                        {cardsData.map((cardData)=>{
+                            return ( 
+                                <HomeSelectCard
+                                    key = {cardData.id}
+                                    text = {cardData.text}
+                                    icon = {cardData.icon}
+                                    onClick = {this.onCardClick}
+                                />
+                            );
+                        })}
+                    </ScrollView>
                 </View>
             </View>
             
@@ -61,19 +53,11 @@ const styles = StyleSheet.create({
     homeViewWrapper:{
         marginHorizontal : 20,
     },
-    locationFilter:{
-        color:'black',
-        fontSize : 18,
-        borderWidth : 1,
-        borderRadius : 5,
-        marginTop : 10,
-        paddingHorizontal:20
-    },
     cardText:{
         color:'black'
     },
-    cardsWrapper: {
-        marginTop: 20
+    cardsWrapper:{
+        paddingBottom:300
     }
 });
 

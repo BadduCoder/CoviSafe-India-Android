@@ -15,6 +15,10 @@ import HomeScreenView from './views/homescreen_view/HomeScreenView';
 import GoogleSignInView from './views/signin_view/GoogleSigninView';
 
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+
+const Stack = createStackNavigator();
 
 
 class App extends React.Component {
@@ -58,36 +62,63 @@ class App extends React.Component {
     }
   }
 
-  render()
-  {
+  HomeScreenWrapperContainer = () => {
     return (
-      <SafeAreaView style={styles.globalParent}>
-        {this.state.loaded?
-          <View styles={styles.globalChild}>
+      <View style={styles.globalParent}>
+        <View styles={styles.globalChild}>
             <HeaderView/>
-            <NavigationContainer>
-              <HomeScreenView/>
-            </NavigationContainer>
-          </View>
-          :
-          <GoogleSignInView 
+            <HomeScreenView/>
+        </View>
+      </View>
+    );
+  }
+
+  renderScreenCondition = () => {
+    if(this.state.loaded)
+    {
+      return(
+        <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="HomeScreen"
+          screenOptions={{
+            headerShown:false
+          }}
+        >
+          <Stack.Screen
+            name="HomeScreen"
+            component={this.HomeScreenWrapperContainer}
+          />
+        </Stack.Navigator>
+        </NavigationContainer>
+      );
+    }
+    return(
+      <View style={styles.googleSignInWrapper}>
+        <GoogleSignInView 
             onPress={this.signIn}
             size={GoogleSigninButton.Size.Standard}
-            color={GoogleSigninButton.Color.Dark}
-          />
-        }
-      </SafeAreaView>
+        />
+      </View>
     );
+      
+  }
+
+  render()
+  {
+    return this.renderScreenCondition();
   }
 };
 
 const styles = StyleSheet.create({
   globalParent : {
-    flex: 1,
-    backgroundColor:'#EEEEEE'
+    backgroundColor:'#EEEEEE',
+    flex:1
   },
   globalChild : {
     margin: 10,
+  },
+  googleSignInWrapper:{
+    flex:1
   }
 });
 

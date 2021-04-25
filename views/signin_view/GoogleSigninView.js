@@ -14,31 +14,34 @@ import {appLogo} from '../../utils/constants';
 const GoogleSignInView = ({onPress, size, color}) => {
 
     return (
-      <SafeAreaView style={styles.googleSignInParent}>
-          <View style={styles.googleSignInChild}>
-              <Image source={appLogo} style={styles.appWelcomeLogo}/>
-              <Text style = {styles.welcomeBanner}>
-                  Please Signin to continue!
-              </Text>
-                <GoogleSigninButton 
-                    onPress={onPress}
-                    size={size}
-                    color={color}
-                />
-          </View>
-
-      </SafeAreaView>
+        <View style={styles.googleSignInWrapper}>
+            <SafeAreaView style={styles.googleSignInParent}>
+                <View style={styles.googleSignInChild}>
+                <Image source={appLogo} style={styles.appWelcomeLogo}/>
+                <Text style = {styles.welcomeBanner}>
+                    Please Signin to continue!
+                </Text>
+                    <GoogleSigninButton 
+                        onPress={onPress}
+                        size={size}
+                        color={color}
+                    />
+                </View>
+            </SafeAreaView>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
+    googleSignInWrapper:{
+        flex:1
+    },
     googleSignInParent : {
         backgroundColor: '#EEEEEE',
-        flex: 1,
+        flex:1,
+        justifyContent:'center'
     },
     googleSignInChild : {
-        flex:1,
-        justifyContent:'center',
         alignItems:'center'
     },
     welcomeBanner : {

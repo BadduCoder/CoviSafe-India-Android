@@ -20,9 +20,24 @@ const cardsData = [
         text : "Medicines"
     },
     {
-        id : '',
+        id : '5',
         icon : require('../../assets/icons/card_icons/food.png'),
         text : "Food"
+    },
+    {
+        id : '6',
+        icon : require('../../assets/icons/card_icons/testube.png'),
+        text : "Tests"
+    },
+    {
+        id : '7',
+        icon : require('../../assets/icons/card_icons/testube.png'),
+        text : "Volunteer to help"
+    },
+    {
+        id : '8',
+        icon : require('../../assets/icons/card_icons/testube.png'),
+        text : "Developers"
     },
 ];
 
