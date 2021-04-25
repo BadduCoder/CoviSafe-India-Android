@@ -4,20 +4,45 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
   TouchableOpacity
 } from 'react-native';
 
+import { hospitalIcon, locationIcon, check, warning } from '../../utils/constants';
 
-const RequirementCard = ({ requirementType, description, city}) => {
+
+const RequirementCard = ({ 
+    entityName,
+    requirementName,
+    primaryContact,
+    secondaryContact,
+    location,
+    verified
+}) => {
 
   return (
         <View style={styles.requirementCard}>
-            <Text>Requirement Type : {requirementType} </Text>
-            <Text>Description : {description}</Text>
-            <Text>City : {city}</Text>
-            <TouchableOpacity >
-                <Text style={styles.detailButton}>View details</Text>
-            </TouchableOpacity>
+            <View style={styles.entityWrapper}>
+                <Image source={hospitalIcon} style={styles.hospitalIcon}/>
+                <Text style={styles.entityName}>{entityName}</Text>
+            </View>
+            <View style={styles.descriptionWrapper}>
+                <View style={styles.requirementWrapper}>
+                    <Text style={styles.requirementName}>{requirementName}</Text>
+                    {
+                        verified?
+                        <Image source={check} style={styles.requirementIcon}/>
+                        :
+                        <Image source={warning} style={styles.requirementIcon}/>
+                    }
+                </View>
+                <Text style={styles.primaryContact}>Primary contact : {primaryContact}</Text>
+                <Text style={styles.secondaryContact}>Secondary contact : {secondaryContact}</Text>
+            </View>
+            <View style={styles.locationWrapper}>
+                <Image source={locationIcon} style={styles.locationIcon}/>
+                <Text style={styles.location}>{location}</Text>
+            </View>
         </View>
   );
 };
@@ -25,19 +50,65 @@ const RequirementCard = ({ requirementType, description, city}) => {
 const styles = StyleSheet.create({
     requirementCard : {
         margin : 10,
-        backgroundColor: '#FFFFFF',
-        borderWidth: 2,
+        marginHorizontal:20,
+        backgroundColor: '#C9C9C9',
         padding: 10,
-        borderRadius:4,
+        borderRadius:5,
         marginBottom : 20
     },
-    detailButton : {
-        textAlign: 'center',
-        fontSize : 18,
-        marginTop : 10,
-        marginBottom: 5,
-        backgroundColor : '#A997DF',
-        borderRadius: 5
+    entityWrapper:{
+        flexDirection:'row',
+        alignItems:'center'
+    },
+    locationWrapper:{
+        marginTop:10,
+        flexDirection:'row',
+        alignItems:'center',    
+        justifyContent:'center'
+    },
+    hospitalIcon:{
+        width:30,
+        height:30,
+    },
+    locationIcon:{
+        width:30,
+        height:30
+    },
+    requirementIcon:{
+        height:20,
+        width:20,
+        marginTop:10,
+        marginLeft:10
+    },
+    requirementWrapper:{
+        flexDirection:'row',
+        alignItems:'center'
+    },
+    entityName:{
+        fontFamily:'RedHatDisplay-Bold',
+        fontSize:20,
+        marginLeft:10
+    },
+    requirementName:{
+        fontFamily:'RedHatDisplay-Medium',
+        marginTop:10
+    },
+    primaryContact:{
+        fontFamily:'RedHatDisplay-Medium',
+        marginTop:10
+    },
+    secondaryContact:{
+        fontFamily:'RedHatDisplay-Medium',
+        marginTop:10
+    },
+    location:{
+        fontFamily:'RedHatDisplay-Regular',
+        alignSelf:'center',
+        marginTop:10,
+        marginLeft:10
+    },
+    descriptionWrapper:{
+        marginLeft:40
     }
 });
 

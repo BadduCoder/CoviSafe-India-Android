@@ -17,33 +17,36 @@ import AddView from '../add_view/AddView';
 import HomeSelectCard from '../homescreen_view/homeSelectionCard';
 import cardsData from './homeScreenCardData';
 
+import HeaderView from '../header_view/HeaderView';
 
 class HomeScreenView extends React.Component {
 
     onCardClick = () => {
-        alert("Hellow")
+        this.props.navigation.navigate("Requirements");
     }
 
     render()
     {
         return (
-            <View style={styles.homeViewWrapper}>
-                <View>
-                    <ScrollView contentContainerStyle={styles.cardsWrapper}>
-                        {cardsData.map((cardData)=>{
-                            return ( 
-                                <HomeSelectCard
-                                    key = {cardData.id}
-                                    text = {cardData.text}
-                                    icon = {cardData.icon}
-                                    onClick = {this.onCardClick}
-                                />
-                            );
-                        })}
-                    </ScrollView>
+            <View style={styles.globalParent}>
+                <View styles={styles.globalChild}>
+                    <HeaderView/>
+                    <View style={styles.homeViewWrapper}>
+                        <ScrollView contentContainerStyle={styles.cardsWrapper}>
+                            {cardsData.map((cardData)=>{
+                                return ( 
+                                    <HomeSelectCard
+                                        key = {cardData.id}
+                                        text = {cardData.text}
+                                        icon = {cardData.icon}
+                                        onClick = {this.onCardClick}
+                                    />
+                                );
+                            })}
+                        </ScrollView>
+                    </View>
                 </View>
             </View>
-            
         );
     }
 };

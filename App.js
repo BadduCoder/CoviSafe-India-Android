@@ -10,12 +10,13 @@ import {GoogleSignin, GoogleSigninButton} from '@react-native-community/google-s
 
 import {GOOGLE_FIREBASE_CLIENT_ID} from '@env';
 
-import HeaderView from './views/header_view/HeaderView';
 import HomeScreenView from './views/homescreen_view/HomeScreenView';
 import GoogleSignInView from './views/signin_view/GoogleSigninView';
+import RequirementView from './views/requirement_view/RequirementView';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import RequirementCard from './views/requirement_view/RequirementCard';
 
 
 const Stack = createStackNavigator();
@@ -62,33 +63,26 @@ class App extends React.Component {
     }
   }
 
-  HomeScreenWrapperContainer = () => {
-    return (
-      <View style={styles.globalParent}>
-        <View styles={styles.globalChild}>
-            <HeaderView/>
-            <HomeScreenView/>
-        </View>
-      </View>
-    );
-  }
-
   renderScreenCondition = () => {
     if(this.state.loaded)
     {
       return(
         <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="HomeScreen"
-          screenOptions={{
-            headerShown:false
-          }}
-        >
-          <Stack.Screen
-            name="HomeScreen"
-            component={this.HomeScreenWrapperContainer}
-          />
-        </Stack.Navigator>
+            <Stack.Navigator
+              initialRouteName="HomeScreen"
+              screenOptions={{
+                headerShown:false
+              }}
+            >
+                <Stack.Screen
+                  name="HomeScreen"
+                  component={HomeScreenView}
+                />
+                <Stack.Screen
+                  name="Requirements"
+                  component={RequirementView}
+                />
+            </Stack.Navigator>
         </NavigationContainer>
       );
     }
@@ -111,7 +105,7 @@ class App extends React.Component {
 
 const styles = StyleSheet.create({
   globalParent : {
-    backgroundColor:'#EEEEEE',
+    backgroundColor:'#FFFFFF',
     flex:1
   },
   globalChild : {
