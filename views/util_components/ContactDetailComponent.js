@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { call } from 'react-native-reanimated';
-// import RNImmediatePhoneCall from 'react-native-immediate-phone-call';
+import RNImmediatePhoneCall from 'react-native-immediate-phone-call';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
@@ -16,13 +16,21 @@ const ContactComponent = ({primaryContact, secondaryContact}) => {
         <View>
             <View style={styles.contactWrapper}>
                 <Text style={styles.primaryContact}>Primary contact : {primaryContact}</Text>
+<<<<<<< HEAD
+                <TouchableOpacity onPress={()=>callContact(primaryContact)}>
+=======
                 <TouchableOpacity onPress={callContact(primaryContact)}>
+>>>>>>> develop
                     <MaterialIcons style={styles.callIcon} name="call" size={25}/>
                 </TouchableOpacity>
             </View>
             <View style={styles.contactWrapper}>
                 <Text style={styles.secondaryContact}>Secondary contact : {secondaryContact}</Text>
+<<<<<<< HEAD
+                <TouchableOpacity onPress={()=>callContact(secondaryContact)}>
+=======
                 <TouchableOpacity onPress={callContact(secondaryContact)}>
+>>>>>>> develop
                     <MaterialIcons style={styles.callIcon} name="call" size={25}/>
                 </TouchableOpacity>
             </View>

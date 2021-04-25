@@ -8,6 +8,8 @@ import {
   TouchableOpacity
 } from 'react-native';
 
+import ContactComponent from '../../util_components/ContactDetailComponent';
+
 import { 
     hospitalIcon, 
     locationIcon, 
@@ -41,8 +43,11 @@ const HospitalBedCard = ({
                         <Image source={warningIcon} style={styles.requirementIcon}/>
                     }
                 </View>
-                <Text style={styles.primaryContact}>Primary contact : {primaryContact}</Text>
-                <Text style={styles.secondaryContact}>Secondary contact : {secondaryContact}</Text>
+                <ContactComponent 
+                    primaryContact = {primaryContact}
+                    secondaryContact = {secondaryContact}
+                />
+                
             </View>
             <View style={styles.locationWrapper}>
                 <Image source={locationIcon} style={styles.locationIcon}/>
@@ -96,14 +101,6 @@ const styles = StyleSheet.create({
     },
     requirementName:{
         fontFamily:'RedHatDisplay-Medium',
-    },
-    primaryContact:{
-        fontFamily:'RedHatDisplay-Medium',
-        marginTop:10
-    },
-    secondaryContact:{
-        fontFamily:'RedHatDisplay-Medium',
-        marginTop:10
     },
     location:{
         fontFamily:'RedHatDisplay-Regular',
