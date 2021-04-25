@@ -1,10 +1,10 @@
-const requirementData = [
+const oxygenRequirementData = [
     {
         'id' : '1',
         'entityName' : "Apollo Hospital",
         'requirementName' : "Oxygen",
-        'primaryContact' : '+91 XXXXXXXXXX',
-        'secondaryContact' : '+91 XXXXXXXXXX',
+        'primaryContact' : '+91XXXXXXXXXX',
+        'secondaryContact' : '+91XXXXXXXXXX',
         'location' : "Jaipur, Rajasthan",
         'verified' : true,
     },
@@ -73,4 +73,4 @@ const requirementData = [
     }
 ];
 
-export default requirementData;
+export default oxygenRequirementData;

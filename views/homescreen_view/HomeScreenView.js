@@ -2,18 +2,10 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import {
   StyleSheet,
-  Text,
   View,
-  Image,
-  TextInput,
-  FlatList,
-  SafeAreaView,
   ScrollView
 } from 'react-native';
 
-import RequirementView from '../requirement_view/RequirementView';
-import SupplyView from '../supply_view/SupplyView';
-import AddView from '../add_view/AddView';
 import HomeSelectCard from '../homescreen_view/homeSelectionCard';
 import cardsData from './homeScreenCardData';
 
@@ -21,8 +13,10 @@ import HeaderView from '../header_view/HeaderView';
 
 class HomeScreenView extends React.Component {
 
-    onCardClick = () => {
-        this.props.navigation.navigate("Requirements");
+    onCardClick = (requirementType) => {
+        this.props.navigation.navigate("Requirements", {
+            requirementType:requirementType
+        });
     }
 
     render()
@@ -39,7 +33,7 @@ class HomeScreenView extends React.Component {
                                         key = {cardData.id}
                                         text = {cardData.text}
                                         icon = {cardData.icon}
-                                        onClick = {this.onCardClick}
+                                        onClick = {() => this.onCardClick(cardData.text)}
                                     />
                                 );
                             })}

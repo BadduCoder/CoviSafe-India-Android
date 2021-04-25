@@ -8,16 +8,22 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-import { hospitalIcon, locationIcon, check, warning } from '../../utils/constants';
+import { 
+    hospitalIcon, 
+    locationIcon, 
+    checkIcon, 
+    warningIcon 
+} from '../../../utils/constants';
 
 
-const RequirementCard = ({ 
+const OxygenSupplierCard = ({ 
     entityName,
-    requirementName,
     primaryContact,
     secondaryContact,
     location,
-    verified
+    verified,
+    icu,
+    normal
 }) => {
 
   return (
@@ -25,16 +31,17 @@ const RequirementCard = ({
             <View style={styles.entityWrapper}>
                 <Image source={hospitalIcon} style={styles.hospitalIcon}/>
                 <Text style={styles.entityName}>{entityName}</Text>
+                {
+                    verified?
+                    <Image source={checkIcon} style={styles.requirementIcon}/>
+                    :
+                    <Image source={warningIcon} style={styles.requirementIcon}/>
+                }
             </View>
             <View style={styles.descriptionWrapper}>
                 <View style={styles.requirementWrapper}>
-                    <Text style={styles.requirementName}>{requirementName}</Text>
-                    {
-                        verified?
-                        <Image source={check} style={styles.requirementIcon}/>
-                        :
-                        <Image source={warning} style={styles.requirementIcon}/>
-                    }
+                    <Text style={styles.icuBedText}>ICU : {icu}</Text>
+                    <Text style={styles.normalBedText}>Normal : {normal}</Text>
                 </View>
                 <Text style={styles.primaryContact}>Primary contact : {primaryContact}</Text>
                 <Text style={styles.secondaryContact}>Secondary contact : {secondaryContact}</Text>
@@ -77,21 +84,24 @@ const styles = StyleSheet.create({
     requirementIcon:{
         height:20,
         width:20,
-        marginTop:10,
         marginLeft:10
     },
     requirementWrapper:{
         flexDirection:'row',
-        alignItems:'center'
+        alignItems:'center',
+        marginTop:10
     },
     entityName:{
         fontFamily:'RedHatDisplay-Bold',
         fontSize:20,
         marginLeft:10
     },
-    requirementName:{
+    normalBedText :{
         fontFamily:'RedHatDisplay-Medium',
-        marginTop:10
+        marginLeft:'20%'
+    },
+    icuBedText:{
+        fontFamily:'RedHatDisplay-Medium',
     },
     primaryContact:{
         fontFamily:'RedHatDisplay-Medium',
@@ -112,4 +122,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default RequirementCard;
+export default OxygenSupplierCard;
