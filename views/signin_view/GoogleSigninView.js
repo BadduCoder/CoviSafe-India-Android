@@ -5,42 +5,53 @@ import {
   StyleSheet,
   Text,
   View,
+  Image
 } from 'react-native';
 import {GoogleSignin, GoogleSigninButton} from '@react-native-community/google-signin';
 
+import {appLogo} from '../../utils/constants';
 
 const GoogleSignInView = ({onPress, size, color}) => {
 
     return (
-      <SafeAreaView style={styles.googleSignInParent}>
-          <View style={styles.googleSignInChild}>
-              <Text style = {styles.welcomeBanner}>
-                  Welcome to CoviSafe India!
-              </Text>
-                <GoogleSigninButton 
-                    onPress={onPress}
-                    size={size}
-                    color={color}
-                />
-          </View>
-
-      </SafeAreaView>
+        <View style={styles.googleSignInWrapper}>
+            <SafeAreaView style={styles.googleSignInParent}>
+                <View style={styles.googleSignInChild}>
+                <Image source={appLogo} style={styles.appWelcomeLogo}/>
+                <Text style = {styles.welcomeBanner}>
+                    Please Signin to continue!
+                </Text>
+                    <GoogleSigninButton 
+                        onPress={onPress}
+                        size={size}
+                        color={color}
+                    />
+                </View>
+            </SafeAreaView>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
+    googleSignInWrapper:{
+        flex:1
+    },
     googleSignInParent : {
-        backgroundColor: '#DDC4DD',
-        flex: 1,
+        backgroundColor: '#EEEEEE',
+        flex:1,
+        justifyContent:'center'
     },
     googleSignInChild : {
-        flex:1,
-        justifyContent:'center',
         alignItems:'center'
     },
     welcomeBanner : {
-        fontSize : 20,
+        fontSize : 14,
         margin : 20,
+        fontFamily : 'RedHatDisplay-Regular'
+    },
+    appWelcomeLogo : {
+        height: 200,
+        width: 400
     }
 });
 

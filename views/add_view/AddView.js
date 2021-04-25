@@ -18,12 +18,15 @@ class AddView extends React.Component {
           <View style ={styles.addFormParent}>
             <Text style={styles.addForm}>Add Requirement/Supply</Text>
 
-            <TextInput style={styles.inputForm} placeholder="Full Name"/>
+            <TextInput style={styles.inputForm} placeholder="Requirement Type"/>
+            <TextInput style={styles.inputForm} placeholder="Requirement description"/>
             <TextInput style={styles.inputForm} placeholder="Primary Contact"/>
-            <TextInput style={styles.inputForm} placeholder="Email"/>
+            <TextInput style={styles.inputForm} placeholder="Secondary Contact"/>
+            <TextInput style={styles.inputForm} placeholder="Location"/>
             
+
             <TouchableOpacity style={styles.submitButton}>
-                <Text style={{textAlign:'center', fontSize:15}}>REGISTER</Text>
+                <Text style={{textAlign:'center', fontSize:15}}>ADD DATA</Text>
             </TouchableOpacity>
             
           </View>
@@ -35,18 +38,21 @@ const styles = StyleSheet.create({
     addForm : {
         textAlign : 'center',
         fontSize : 20,
-        color: 'white'
+        color: 'white',
+        marginTop:10
     },
     addFormParent:{
         flex:1,
         color: 'white',
-        backgroundColor:'#6d7194',
+        backgroundColor:'#666666',
         padding:15,
     },
     submitButton:{
         backgroundColor: 'white',
-        padding:20,
-        borderRadius: 20
+        padding:10,
+        borderRadius: 20,
+        marginTop:30,
+        backgroundColor:'#EEEEEE'
     }
 });
 

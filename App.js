@@ -10,11 +10,16 @@ import {GoogleSignin, GoogleSigninButton} from '@react-native-community/google-s
 
 import {GOOGLE_FIREBASE_CLIENT_ID} from '@env';
 
-import HomeHeaderView from './views/home_view/HomeView'
-import HomeScreenTabs from './views/util_view/HomeScreenTabs';
+import HomeScreenView from './views/homescreen_view/HomeScreenView';
 import GoogleSignInView from './views/signin_view/GoogleSigninView';
+import RequirementView from './views/requirement_view/RequirementView';
 
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import RequirementCard from './views/requirement_view/RequirementCard';
+
+
+const Stack = createStackNavigator();
 
 
 class App extends React.Component {
@@ -58,36 +63,56 @@ class App extends React.Component {
     }
   }
 
-  render()
-  {
-    return (
-      <SafeAreaView style={styles.globalParent}>
-        {this.state.loaded?
-          <SafeAreaView style={styles.globalParent}>
-            <HomeHeaderView/>
-            <NavigationContainer>
-              <HomeScreenTabs/>
-            </NavigationContainer>
-          </SafeAreaView>
-          :
-          <GoogleSignInView 
+  renderScreenCondition = () => {
+    if(this.state.loaded)
+    {
+      return(
+        <NavigationContainer>
+            <Stack.Navigator
+              initialRouteName="HomeScreen"
+              screenOptions={{
+                headerShown:false
+              }}
+            >
+                <Stack.Screen
+                  name="HomeScreen"
+                  component={HomeScreenView}
+                />
+                <Stack.Screen
+                  name="Requirements"
+                  component={RequirementView}
+                />
+            </Stack.Navigator>
+        </NavigationContainer>
+      );
+    }
+    return(
+      <View style={styles.googleSignInWrapper}>
+        <GoogleSignInView 
             onPress={this.signIn}
             size={GoogleSigninButton.Size.Standard}
-            color={GoogleSigninButton.Color.Dark}
-          />
-        }
-      </SafeAreaView>
+        />
+      </View>
     );
+      
+  }
+
+  render()
+  {
+    return this.renderScreenCondition();
   }
 };
 
 const styles = StyleSheet.create({
   globalParent : {
-    backgroundColor: 'white',
-    flex: 1,
+    backgroundColor:'#FFFFFF',
+    flex:1
   },
   globalChild : {
-    margin: 10
+    margin: 10,
+  },
+  googleSignInWrapper:{
+    flex:1
   }
 });
 
