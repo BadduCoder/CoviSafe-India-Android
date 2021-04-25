@@ -15,13 +15,13 @@ const ContactComponent = ({primaryContact, secondaryContact}) => {
     return (
         <View>
             <View style={styles.contactWrapper}>
-                <Text style={styles.primaryContact}>Primary contact : {primaryContact}</Text>
+                <Text style={styles.primaryContact}>Contact : {primaryContact}</Text>
                 <TouchableOpacity onPress={()=>callContact(primaryContact)}>
                     <MaterialIcons style={styles.callIcon} name="call" size={25}/>
                 </TouchableOpacity>
             </View>
             <View style={styles.contactWrapper}>
-                <Text style={styles.secondaryContact}>Secondary contact : {secondaryContact}</Text>
+                <Text style={styles.secondaryContact}>Contact : {secondaryContact}</Text>
                 <TouchableOpacity onPress={()=>callContact(secondaryContact)}>
                     <MaterialIcons style={styles.callIcon} name="call" size={25}/>
                 </TouchableOpacity>

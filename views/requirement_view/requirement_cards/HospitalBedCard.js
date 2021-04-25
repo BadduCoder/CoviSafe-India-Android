@@ -14,7 +14,7 @@ import {
     checkIcon, 
     warningIcon 
 } from '../../../utils/constants';
-
+import ContactComponent from '../../util_components/ContactDetailComponent';
 
 const OxygenSupplierCard = ({ 
     entityName,
@@ -43,8 +43,10 @@ const OxygenSupplierCard = ({
                     <Text style={styles.icuBedText}>ICU : {icu}</Text>
                     <Text style={styles.normalBedText}>Normal : {normal}</Text>
                 </View>
-                <Text style={styles.primaryContact}>Primary contact : {primaryContact}</Text>
-                <Text style={styles.secondaryContact}>Secondary contact : {secondaryContact}</Text>
+                <ContactComponent 
+                    primaryContact = {primaryContact}
+                    secondaryContact = {secondaryContact}
+                />
             </View>
             <View style={styles.locationWrapper}>
                 <Image source={locationIcon} style={styles.locationIcon}/>
