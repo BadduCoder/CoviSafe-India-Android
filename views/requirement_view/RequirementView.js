@@ -78,7 +78,8 @@ class RequirementView extends React.Component {
 
 const styles = StyleSheet.create({
     requirementView : {
-        flex: 1
+        flex: 1,
+        marginBottom:120
     }
 });
 

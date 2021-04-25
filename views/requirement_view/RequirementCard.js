@@ -25,9 +25,11 @@ const RequirementCard = ({ requirementType, description, city}) => {
 const styles = StyleSheet.create({
     requirementCard : {
         margin : 10,
-        backgroundColor: '#dccfec',
+        backgroundColor: '#FFFFFF',
+        borderWidth: 2,
         padding: 10,
-        borderRadius:15
+        borderRadius:4,
+        marginBottom : 20
     },
     detailButton : {
         textAlign: 'center',

@@ -5,17 +5,20 @@ import {
   StyleSheet,
   Text,
   View,
+  Image
 } from 'react-native';
 import {GoogleSignin, GoogleSigninButton} from '@react-native-community/google-signin';
 
+import {appLogo} from '../../utils/constants';
 
 const GoogleSignInView = ({onPress, size, color}) => {
 
     return (
       <SafeAreaView style={styles.googleSignInParent}>
           <View style={styles.googleSignInChild}>
+              <Image source={appLogo} style={styles.appWelcomeLogo}/>
               <Text style = {styles.welcomeBanner}>
-                  Welcome to CoviSafe India!
+                  Please Signin to continue!
               </Text>
                 <GoogleSigninButton 
                     onPress={onPress}
@@ -30,7 +33,7 @@ const GoogleSignInView = ({onPress, size, color}) => {
 
 const styles = StyleSheet.create({
     googleSignInParent : {
-        backgroundColor: '#DDC4DD',
+        backgroundColor: '#EEEEEE',
         flex: 1,
     },
     googleSignInChild : {
@@ -39,8 +42,13 @@ const styles = StyleSheet.create({
         alignItems:'center'
     },
     welcomeBanner : {
-        fontSize : 20,
+        fontSize : 14,
         margin : 20,
+        fontFamily : 'RedHatDisplay-Regular'
+    },
+    appWelcomeLogo : {
+        height: 200,
+        width: 400
     }
 });
 

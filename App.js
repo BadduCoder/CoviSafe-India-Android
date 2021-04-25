@@ -10,8 +10,8 @@ import {GoogleSignin, GoogleSigninButton} from '@react-native-community/google-s
 
 import {GOOGLE_FIREBASE_CLIENT_ID} from '@env';
 
-import HomeHeaderView from './views/home_view/HomeView'
-import HomeScreenTabs from './views/util_view/HomeScreenTabs';
+import HeaderView from './views/header_view/HeaderView';
+import HomeScreenView from './views/homescreen_view/HomeScreenView';
 import GoogleSignInView from './views/signin_view/GoogleSigninView';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -63,12 +63,12 @@ class App extends React.Component {
     return (
       <SafeAreaView style={styles.globalParent}>
         {this.state.loaded?
-          <SafeAreaView style={styles.globalParent}>
-            <HomeHeaderView/>
+          <View styles={styles.globalChild}>
+            <HeaderView/>
             <NavigationContainer>
-              <HomeScreenTabs/>
+              <HomeScreenView/>
             </NavigationContainer>
-          </SafeAreaView>
+          </View>
           :
           <GoogleSignInView 
             onPress={this.signIn}
@@ -83,11 +83,11 @@ class App extends React.Component {
 
 const styles = StyleSheet.create({
   globalParent : {
-    backgroundColor: 'white',
     flex: 1,
+    backgroundColor:'#EEEEEE'
   },
   globalChild : {
-    margin: 10
+    margin: 10,
   }
 });
 
