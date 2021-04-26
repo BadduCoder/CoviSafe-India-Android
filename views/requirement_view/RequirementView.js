@@ -27,17 +27,21 @@ class RequirementView extends React.Component {
         super(props);
         this.state = {
             serverData : null,
-            loaded : false
+            loaded : false,
+            location : null,
         };
     }
 
     componentDidMount = () => {
-        //As soon as the component is loaded, make an API call to fetch the data
-        const requirementCode = this.props.route.params.requirementCode;
-        this.getSupplyData(requirementCode);
+        this.filterData();
     }
     
-    getSupplyData = async (r_type) => {
+    filterData = (city, second_param = null) => {
+        const requirementCode = this.props.route.params.requirementCode;
+        this.getSupplyData(requirementCode, city, second_param);
+    }
+
+    getSupplyData = async (r_type, city=null, opt_param=null) => {
         /*
             This fetches the data according to filters mentioned:
             Requirement Type : Hardcoded from previous card selection
@@ -45,7 +49,15 @@ class RequirementView extends React.Component {
             Type (variable) : Only available in several cases
                     Like for plasma/blood (Blood Group Filter)            
         */
-        fetch(`${BASE_SERVER_URL}/supplies?format=json&r_type=${r_type}`,{
+
+        let fetchURL = `${BASE_SERVER_URL}/supplies?format=json&r_type=${r_type}`
+        
+        if(city!= null)
+            fetchURL += `&city=${city}`
+        if(opt_param != null)
+            fetchURL += `&${opt_param.key}=${opt_param.value}`
+
+        fetch(fetchURL,{
             method: 'GET'
         }).then(response => response.json()).then(data=>{
             
@@ -66,9 +78,9 @@ class RequirementView extends React.Component {
         const requirementCode = this.props.route.params.requirementCode;
 
         if(requirementCode === REQUIREMENT_TYPE.OXYGEN)
-            return <OxygenFilter/>;
+            return <OxygenFilter filterCallback={this.filterData}/>;
         else if(requirementCode === REQUIREMENT_TYPE.PLASMA_BLOOD)
-            return <BloodPicker/>;
+            return <BloodPicker filterCallback={this.filterData}/>;
         return null;
     }
 

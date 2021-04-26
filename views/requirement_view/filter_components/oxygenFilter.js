@@ -9,38 +9,86 @@ import { Picker } from '@react-native-picker/picker';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
-const OxygenFilter = () => {
-    return (
-        <View style={styles.filterWrapper}>
-            <Picker
-                onValueChange={()=>alert("Hey")}
-                style={styles.locationPicker}
-                dropdownIconColor="green"
-                mode="dialog"
-            >
-                <Picker.Item 
-                    style={styles.locationPlaceholder} 
-                    label="Jaipur" 
-                    value="Jaipur"
-                />
-            </Picker>
-            <Picker
-                onValueChange={()=>alert("Hey")}
-                style={styles.typePicker}
-                dropdownIconColor="green"
-                mode="dialog"
-            >
-                <Picker.Item 
-                    style={styles.typePlaceholder} 
-                    label="Concentrator" 
-                    value="Concentrator"
-                />
-            </Picker>
-            <TouchableOpacity style={styles.filterButtonWrapper}>
-                <Text style={styles.filterButton}>Filter</Text>
-            </TouchableOpacity>
-        </View>
-    );
+class OxygenFilter extends React.Component {
+    
+    constructor(props){
+        super(props)
+        this.state = {
+            city: null,
+            secondParam: null
+        }
+    }
+    
+    oxygenTypeFilter = (_oxygenType) => {
+        if(_oxygenType != '-') 
+        {
+            this.setState({
+                secondParam: {
+                'key' : 'oxygen_supply_type',
+                'value' : _oxygenType
+                }
+            });
+        }
+    }
+
+    locationFilter = (_city) => {
+        this.setState({
+            city: _city
+        })
+    }
+
+    filterData = () => {
+        this.props.filterCallback(this.state.city, this.state.secondParam);
+    }
+    
+    render() {
+        return (
+            <View style={styles.filterWrapper}>
+                <Picker
+                    style={styles.locationPicker}
+                    dropdownIconColor="green"
+                    mode="dialog"
+                    onValueChange = {(itemValue, _ )=>{this.locationFilter(itemValue)}}
+                >
+                    <Picker.Item 
+                        style={styles.locationPlaceholder} 
+                        label="Location" 
+                        enabled={false} 
+                        value="-"
+                    />
+                    <Picker.Item 
+                        style={styles.locationPlaceholder} 
+                        label="jaipur" 
+                        value="jaipur"
+                    />
+                </Picker>
+                <Picker
+                    style={styles.typePicker}
+                    dropdownIconColor="green"
+                    mode="dialog"
+                    onValueChange={(itemValue, _)=>{this.oxygenTypeFilter(itemValue)}}
+                >
+                    <Picker.Item 
+                        style={styles.locationPlaceholder} 
+                        label="Type"
+                        enabled={false} 
+                        value="-"
+                    />
+                    <Picker.Item 
+                        style={styles.typePlaceholder} 
+                        label="Concentrator" 
+                        value="Concentrator"
+                    />
+                </Picker>
+                <TouchableOpacity 
+                    onPress = {this.filterData}
+                    style={styles.filterButtonWrapper}
+                >
+                    <Text style={styles.filterButton}>Filter</Text>
+                </TouchableOpacity>
+            </View>
+        );
+    };
 }
 
 const styles = StyleSheet.create({
@@ -86,7 +134,7 @@ const styles = StyleSheet.create({
     },
     filterButton:{
         fontFamily:'RedHatDisplay-Regular',
-        fontSize : 18,
+        fontSize : 15,
         color:'white'
     }
 });

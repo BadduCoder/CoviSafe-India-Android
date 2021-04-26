@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { call } from 'react-native-reanimated';
 import RNImmediatePhoneCall from 'react-native-immediate-phone-call';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
