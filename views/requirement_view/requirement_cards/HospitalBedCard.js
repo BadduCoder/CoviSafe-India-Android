@@ -16,15 +16,18 @@ import {
 } from '../../../utils/constants';
 import ContactComponent from '../../util_components/ContactDetailComponent';
 
-const OxygenSupplierCard = ({ 
-    entityName,
-    primaryContact,
-    secondaryContact,
-    location,
-    verified,
-    icu,
-    normal
+const HospitalBedCard = ({ 
+    bedData
 }) => {
+
+    const entityName = bedData.supplier_name;
+    const requirementName = "HC";
+    const primaryContact = bedData.primary_contact;
+    const secondaryContact = bedData.secondary_contact;
+    const location = bedData.address.city + ', ' + bedData.address.state;
+    const verified = bedData.verified;
+    const icu = bedData.icu_bed_count;
+    const normal = bedData.normal_bed_count;
 
   return (
         <View style={styles.requirementCard}>
@@ -124,4 +127,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default OxygenSupplierCard;
+export default HospitalBedCard;

@@ -17,15 +17,17 @@ import {
 import ContactComponent from '../../util_components/ContactDetailComponent';
 
 const BloodDonorCard = ({ 
-    entityName,
-    requirementName,
-    primaryContact,
-    secondaryContact,
-    location,
-    verified,
-    blood,
-    plasma
+    bloodData
 }) => {
+
+    const entityName = bloodData.supplier_name
+    const requirementName = bloodData.blood_group
+    const primaryContact = bloodData.primary_contact
+    const secondaryContact = bloodData.secondary_contact
+    const location = bloodData.address.city+', '+bloodData.address.state
+    const verified = bloodData.verified
+    const blood = bloodData.supply_type=="BLD"
+    const plasma = bloodData.supply_type=="PLM"
 
   return (
         <View style={styles.requirementCard}>

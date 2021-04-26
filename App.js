@@ -1,9 +1,8 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
-  Text,
+  Image,
   View,
 } from 'react-native';
 import {GoogleSignin, GoogleSigninButton} from '@react-native-community/google-signin';

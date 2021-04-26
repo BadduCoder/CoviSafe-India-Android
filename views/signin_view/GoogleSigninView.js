@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {GoogleSignin, GoogleSigninButton} from '@react-native-community/google-signin';
 
-import {appLogo} from '../../utils/constants';
+import {appLogoGIF} from '../../utils/constants';
 
 const GoogleSignInView = ({onPress, size, color}) => {
 
@@ -17,7 +17,7 @@ const GoogleSignInView = ({onPress, size, color}) => {
         <View style={styles.googleSignInWrapper}>
             <SafeAreaView style={styles.googleSignInParent}>
                 <View style={styles.googleSignInChild}>
-                <Image source={appLogo} style={styles.appWelcomeLogo}/>
+                <Image source={appLogoGIF} style={styles.appWelcomeLogo}/>
                 <Text style = {styles.welcomeBanner}>
                     Please Signin to continue!
                 </Text>
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     },
     appWelcomeLogo : {
         height: 200,
-        width: 400
+        width: 400,
     }
 });
 
