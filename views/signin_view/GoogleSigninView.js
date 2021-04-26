@@ -7,9 +7,9 @@ import {
   View,
   Image
 } from 'react-native';
-import {GoogleSignin, GoogleSigninButton} from '@react-native-community/google-signin';
+import { GoogleSigninButton } from '@react-native-community/google-signin';
 
-import {appLogoGIF} from '../../utils/constants';
+import { appLogoGIF } from '../../utils/constants';
 
 const GoogleSignInView = ({onPress, size, color}) => {
 

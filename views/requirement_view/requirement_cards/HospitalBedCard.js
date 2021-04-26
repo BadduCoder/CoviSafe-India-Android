@@ -1,11 +1,9 @@
 import React from 'react';
 import {
-  ScrollView,
   StyleSheet,
   Text,
   View,
   Image,
-  TouchableOpacity
 } from 'react-native';
 
 import { 
@@ -21,7 +19,6 @@ const HospitalBedCard = ({
 }) => {
 
     const entityName = bedData.supplier_name;
-    const requirementName = "HC";
     const primaryContact = bedData.primary_contact;
     const secondaryContact = bedData.secondary_contact;
     const location = bedData.address.city + ', ' + bedData.address.state;

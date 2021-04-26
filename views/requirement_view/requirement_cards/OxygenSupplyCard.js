@@ -1,11 +1,9 @@
 import React from 'react';
 import {
-  ScrollView,
   StyleSheet,
   Text,
   View,
   Image,
-  TouchableOpacity
 } from 'react-native';
 
 import ContactComponent from '../../util_components/ContactDetailComponent';

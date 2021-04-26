@@ -13,9 +13,9 @@ import HeaderView from '../header_view/HeaderView';
 
 class HomeScreenView extends React.Component {
 
-    onCardClick = (requirementType) => {
+    onCardClick = (requirementCode) => {
         this.props.navigation.navigate("Requirements", {
-            requirementType:requirementType
+            requirementCode:requirementCode
         });
     }
 
@@ -33,7 +33,7 @@ class HomeScreenView extends React.Component {
                                         key = {cardData.id}
                                         text = {cardData.text}
                                         icon = {cardData.icon}
-                                        onClick = {() => this.onCardClick(cardData.text)}
+                                        onClick = {() => this.onCardClick(cardData.code)}
                                     />
                                 );
                             })}

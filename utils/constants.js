@@ -8,8 +8,15 @@ const checkIcon = require('../assets/icons/card_icons/check.png');
 const warningIcon = require('../assets/icons/card_icons/warning.png');
 const donorIcon = require('../assets/icons/card_icons/donor.png');
 
-REQUIREMENT_TYPE = {
-    OXYGEN : "OXY"
+const REQUIREMENT_TYPE = {
+    OXYGEN : "OXY",
+    PLASMA_BLOOD : "P&B",
+    HOSPITAL_BED : "HBD",
+    HOME_FOOD : "HFD",
+    MEDICINE : "MED",
+    TEST : "TST",
+    VOLUNTEER : "VLN",
+    DEVELOPER : "DEV"
 }
 
 export { 
@@ -21,5 +28,6 @@ export {
     locationIcon,
     checkIcon,
     warningIcon,
-    donorIcon 
+    donorIcon,
+    REQUIREMENT_TYPE,
 };
