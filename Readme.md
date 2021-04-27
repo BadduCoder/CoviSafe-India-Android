@@ -22,9 +22,9 @@ We won't be adding functionalities for medicines/food/tests as of now, where med
 
 Figma designs (not exact as in app) but have tried to keep application as similar as possible
 
-<img src="./.git/images/HomeScreen.png" height='400px'>
-<img src="./.git/images/OxygenScreen.png" height='400px'>
-<img src="./.git/images/PlasmaScreen.png" height='400px'>
+<img src="./extra_data/screenshots/HomeScreen.png" height='400px'>
+<img src="./extra_data/screenshots/OxygenScreen.png" height='400px'>
+<img src="./extra_data/screenshots/PlasmaScreen.png" height='400px'>
 
 ## Contribution
 
