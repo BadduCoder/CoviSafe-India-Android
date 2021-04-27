@@ -1,11 +1,9 @@
 import React from 'react';
 import {
-  ScrollView,
   StyleSheet,
   Text,
   View,
   Image,
-  TouchableOpacity
 } from 'react-native';
 
 import { 
@@ -14,18 +12,20 @@ import {
     checkIcon, 
     warningIcon 
 } from '../../../utils/constants';
-
+import ContactComponent from '../../util_components/ContactDetailComponent';
 
 const BloodDonorCard = ({ 
-    entityName,
-    requirementName,
-    primaryContact,
-    secondaryContact,
-    location,
-    verified,
-    blood,
-    plasma
+    bloodData
 }) => {
+
+    const entityName = bloodData.supplier_name
+    const requirementName = bloodData.blood_group
+    const primaryContact = bloodData.primary_contact
+    const secondaryContact = bloodData.secondary_contact
+    const location = bloodData.address.city+', '+bloodData.address.state
+    const verified = bloodData.verified
+    const blood = bloodData.supply_type=="BLD"
+    const plasma = bloodData.supply_type=="PLM"
 
   return (
         <View style={styles.requirementCard}>
@@ -55,8 +55,10 @@ const BloodDonorCard = ({
                         }
                     </View>
                 </View>
-                <Text style={styles.primaryContact}>Primary contact : {primaryContact}</Text>
-                <Text style={styles.secondaryContact}>Secondary contact : {secondaryContact}</Text>
+                <ContactComponent 
+                    primaryContact = {primaryContact}
+                    secondaryContact = {secondaryContact}
+                />
             </View>
             <View style={styles.locationWrapper}>
                 <Image source={locationIcon} style={styles.locationIcon}/>

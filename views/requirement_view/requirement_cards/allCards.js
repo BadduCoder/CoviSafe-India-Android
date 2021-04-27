@@ -1,9 +1,9 @@
-import OxygenSupplierCard from './OxygenSupplierCard';
-import BloodDonorCard from './BloodDonorCard';
 import HospitalBedCard from './HospitalBedCard';
+import BloodDonorCard from './BloodDonorCard';
+import OxygenSupplyCard from './OxygenSupplyCard';
 
 export {
-    OxygenSupplierCard,
+    OxygenSupplyCard,
     BloodDonorCard,
     HospitalBedCard
 };

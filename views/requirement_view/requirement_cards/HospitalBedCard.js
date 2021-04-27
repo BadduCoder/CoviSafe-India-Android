@@ -1,11 +1,9 @@
 import React from 'react';
 import {
-  ScrollView,
   StyleSheet,
   Text,
   View,
   Image,
-  TouchableOpacity
 } from 'react-native';
 
 import { 
@@ -14,17 +12,19 @@ import {
     checkIcon, 
     warningIcon 
 } from '../../../utils/constants';
+import ContactComponent from '../../util_components/ContactDetailComponent';
 
-
-const OxygenSupplierCard = ({ 
-    entityName,
-    primaryContact,
-    secondaryContact,
-    location,
-    verified,
-    icu,
-    normal
+const HospitalBedCard = ({ 
+    bedData
 }) => {
+
+    const entityName = bedData.supplier_name;
+    const primaryContact = bedData.primary_contact;
+    const secondaryContact = bedData.secondary_contact;
+    const location = bedData.address.city + ', ' + bedData.address.state;
+    const verified = bedData.verified;
+    const icu = bedData.icu_bed_count;
+    const normal = bedData.normal_bed_count;
 
   return (
         <View style={styles.requirementCard}>
@@ -43,8 +43,10 @@ const OxygenSupplierCard = ({
                     <Text style={styles.icuBedText}>ICU : {icu}</Text>
                     <Text style={styles.normalBedText}>Normal : {normal}</Text>
                 </View>
-                <Text style={styles.primaryContact}>Primary contact : {primaryContact}</Text>
-                <Text style={styles.secondaryContact}>Secondary contact : {secondaryContact}</Text>
+                <ContactComponent 
+                    primaryContact = {primaryContact}
+                    secondaryContact = {secondaryContact}
+                />
             </View>
             <View style={styles.locationWrapper}>
                 <Image source={locationIcon} style={styles.locationIcon}/>
@@ -122,4 +124,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default OxygenSupplierCard;
+export default HospitalBedCard;

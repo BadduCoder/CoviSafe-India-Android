@@ -1,11 +1,9 @@
 import React from 'react';
 import {
-  ScrollView,
   StyleSheet,
   Text,
   View,
   Image,
-  TouchableOpacity
 } from 'react-native';
 
 import ContactComponent from '../../util_components/ContactDetailComponent';
@@ -18,30 +16,32 @@ import {
 } from '../../../utils/constants';
 
 
-const HospitalBedCard = ({ 
-    entityName,
-    requirementName,
-    primaryContact,
-    secondaryContact,
-    location,
-    verified
+const OxygenSupplyCard = ({ 
+    oxygenData
 }) => {
+
+    const entityName = oxygenData.supplier_name;
+    const requirementName = oxygenData.oxygen_supply_type;
+    const primaryContact = oxygenData.primary_contact;
+    const secondaryContact = oxygenData.secondary_contact;
+    const location = oxygenData.address.city + ', ' + oxygenData.address.state;
+    const verified = oxygenData.verified;
 
   return (
         <View style={styles.requirementCard}>
             <View style={styles.entityWrapper}>
                 <Image source={hospitalIcon} style={styles.hospitalIcon}/>
                 <Text style={styles.entityName}>{entityName}</Text>
+                {
+                    verified?
+                    <Image source={checkIcon} style={styles.requirementIcon}/>
+                    :
+                    <Image source={warningIcon} style={styles.requirementIcon}/>
+                }
             </View>
             <View style={styles.descriptionWrapper}>
                 <View style={styles.requirementWrapper}>
                     <Text style={styles.requirementName}>{requirementName}</Text>
-                    {
-                        verified?
-                        <Image source={checkIcon} style={styles.requirementIcon}/>
-                        :
-                        <Image source={warningIcon} style={styles.requirementIcon}/>
-                    }
                 </View>
                 <ContactComponent 
                     primaryContact = {primaryContact}
@@ -113,4 +113,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default HospitalBedCard;
+export default OxygenSupplyCard;
