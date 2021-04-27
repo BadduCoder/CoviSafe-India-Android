@@ -10,7 +10,7 @@ const donorIcon = require('../assets/icons/card_icons/donor.png');
 
 const REQUIREMENT_TYPE = {
     OXYGEN : "OXY",
-    PLASMA_BLOOD : "P&B",
+    PLASMA_BLOOD : "PAB",
     HOSPITAL_BED : "HBD",
     HOME_FOOD : "HFD",
     MEDICINE : "MED",
