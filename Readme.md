@@ -1,4 +1,4 @@
-<center><img src="./assets/icons/CoviSafeIndiaHeader.png" height='300px'></center>
+<p align="center"><img src="./assets/icons/CoviSafeIndia.gif" height='300px'></p>
 
 # CoviSafe-India Project
 
@@ -22,9 +22,11 @@ We won't be adding functionalities for medicines/food/tests as of now, where med
 
 Figma designs (not exact as in app) but have tried to keep application as similar as possible
 
-<img src="./extra_data/screenshots/HomeScreen.png" height='400px'>
-<img src="./extra_data/screenshots/OxygenScreen.png" height='400px'>
-<img src="./extra_data/screenshots/PlasmaScreen.png" height='400px'>
+<p style="flex:1;flex-direction:row;">
+  <img src="./extra_data/screenshots/HomeScreen.png" height='400px'>
+  <img src="./extra_data/screenshots/OxygenScreen.png" height='400px'>
+  <img src="./extra_data/screenshots/PlasmaScreen.png" height='400px'>
+</p>
 
 ## Contribution
 
